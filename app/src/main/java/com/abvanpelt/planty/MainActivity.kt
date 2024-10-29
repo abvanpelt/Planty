@@ -5,14 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.abvanpelt.planty.add.AddPlantScreen
 import com.abvanpelt.planty.home.HomeScreen
+import com.abvanpelt.planty.navigation.AddPlant
+import com.abvanpelt.planty.navigation.Home
 import com.abvanpelt.planty.ui.theme.PlantyTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,20 +21,18 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val navController = rememberNavController()
+
             PlantyTheme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    floatingActionButton = {
-                        FloatingActionButton(
-                            onClick = { /* TODO: navigate to AddPlantScreen */ }
-                        ) {
-                            Icon(Icons.Filled.Add, "Add Plant")
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    NavHost(navController = navController, startDestination = Home) {
+                        composable<Home> {
+                            HomeScreen { navController.navigate(AddPlant) }
+                        }
+                        composable<AddPlant> {
+                            AddPlantScreen()
                         }
                     }
-                ) { innerPadding ->
-                    HomeScreen(
-                        modifier = Modifier.padding(innerPadding)
-                    )
                 }
             }
         }
