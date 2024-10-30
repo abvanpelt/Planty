@@ -1,4 +1,4 @@
-package com.abvanpelt.planty.add
+package com.abvanpelt.planty.ui.add
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
