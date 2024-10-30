@@ -1,0 +1,3 @@
+package com.abvanpelt.planty.datasource
+
+interface PlantsLocalDataSource
