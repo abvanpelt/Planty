@@ -15,7 +15,9 @@ import com.abvanpelt.planty.ui.home.HomeScreen
 import com.abvanpelt.planty.navigation.AddPlant
 import com.abvanpelt.planty.navigation.Home
 import com.abvanpelt.planty.ui.theme.PlantyTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

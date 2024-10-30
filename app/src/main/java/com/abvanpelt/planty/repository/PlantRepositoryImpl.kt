@@ -1,4 +1,9 @@
 package com.abvanpelt.planty.repository
 
-class PlantRepositoryImpl : PlantRepository {
+import com.abvanpelt.planty.datasource.PlantLocalDataSource
+import javax.inject.Inject
+
+class PlantRepositoryImpl @Inject constructor(
+    private val localDataSource: PlantLocalDataSource
+): PlantRepository {
 }
